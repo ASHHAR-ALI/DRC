@@ -1,0 +1,153 @@
+:root {
+    --M10: 10px;
+    --M20: 20px;
+    --M30: 30px;
+    --M40: 40px;
+    --M50: 50px;
+    --MMax: 30px;
+    --MLeft: 10px;
+    --MRight: 10px;
+    --PTop: 20px;
+    --PMax: 40px;
+    --ColHeight: 500px;
+    --BGColor: rgb(74, 82, 74);
+    --TextDark: black;
+    --TextLight: White;
+
+    text-align: center;
+    box-sizing: border-box;
+}
+
+@page {
+    size: A4;
+    margin: 0;
+    padding: 0;
+    width: 790px;
+    height: 1122px;
+    display: block;
+}
+
+html,
+body {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    /* background-image: url("{{ asset('/allassets/images/background/fp12.jpg') }}"); */
+    background-image: url('../../allassets/images/background/fp12.jpg');
+    background-repeat: repeat-y;
+    background-size: cover;
+    background-position: fixed;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.8;
+    box-sizing: border-box;
+}
+
+table::before,
+table::after,
+thead:before,
+thead:after,
+tbody:before,
+tbody:after,
+tfoot:before,
+tfoot:after {
+    display: none;
+}
+
+.heading {
+    margin-top: 20px;
+    font-size: xx-small;
+    margin: 0;
+    padding: 0;
+}
+
+.hr {
+    border-top: 3px solid red;
+    margin: 0;
+    padding: 0;
+}
+
+h4,
+h5,
+h6 {
+    font-size: xx-small;
+    text-align: center;
+}
+
+tr {
+    font-size: x-small;
+}
+
+th {
+    padding: 0;
+}
+
+td {
+    text-align: center;
+    font-size: xx-small;
+    padding: 0;
+}
+
+table {
+    border: 2px solid black;
+    width: 100%;
+    height: auto;
+    table-layout: fixed;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    color: white;
+}
+
+.table,
+th,
+td {
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+.first-table {
+    height: 150px;
+    width: 90%;
+    display: inline-block;
+    padding: 0;
+    margin: (30px 35px 10px 35px);
+    background-color: rgb(88, 145, 103);
+    border: 2px solid green;
+}
+
+.second-table {
+    height: 150px;
+    width: 90%;
+    display: inline-block;
+    padding: 0;
+    margin: (10px 35px 10px 35px);
+    background-color: rgb(91, 88, 145);
+    border: 2px solid rgb(42, 18, 150);
+}
+
+
+.third-table {
+    height: 150px;
+    width: 90%;
+    display: inline-block;
+    padding: 0;
+    margin: (30px 35px 10px 35px);
+    background-color: rgb(94, 155, 62);
+    border: 2px solid rgb(43, 228, 10);
+}
+
+
+.fourth-table {
+    height: 150px;
+    width: 90%;
+    display: inline-block;
+    padding: 0;
+    margin: (50px 35px 10px 35px);
+    background-color: rgb(94, 155, 62);
+    border: 2px solid rgb(43, 228, 10);
+}
+
+
+
+

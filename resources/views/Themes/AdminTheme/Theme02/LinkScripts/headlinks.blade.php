@@ -1,0 +1,63 @@
+
+
+
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet" />
+
+
+<!-- ---------------- CDN Link For Font Awesone Icon------------------ -->
+<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+<!-- ---------------- CDN Link For Google Font Awesone Icon------------------ -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href=" {{ asset('/allassets/BootstrapV5/css/bootstrap.min.css') }} " />
+<link rel="stylesheet" href="{{ asset('/allassets/DeskAppTheme/vendors/styles/core.css') }}" />
+<link rel="stylesheet" href="{{ asset('/allassets/DeskAppTheme/vendors/styles/icon-font.min.css') }}" />
+{{-- <link rel="stylesheet" href="{{ asset('/allassets/DeskAppTheme/src/plugins/datatables/css/dataTables.bootstrap4.min.css') }}" />
+<link rel="stylesheet" href="{{ asset('/allassets/DeskAppTheme/src/plugins/datatables/css/responsive.bootstrap4.min.css') }}" /> --}}
+<link rel="stylesheet" href="{{ asset('/allassets/DeskAppTheme/vendors/styles/style.css') }}" />
+
+<link rel="stylesheet" href="{{ asset('/allassets/DataT ables/datatables.min.css') }}" />
+
+<script src="{{ asset('/allassets/Jquery/jquery-3.7.1.js') }}"></script>
+
+
+
+
+{{-- <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2973766580778258"
+crossorigin="anonymous"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+
+function gtag() {
+    dataLayer.push(arguments);
+}
+gtag("js", new Date());
+
+gtag("config", "G-GBZ3SGGX85");
+</script>
+<!-- Google Tag Manager -->
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        "gtm.start": new Date().getTime(),
+        event: "gtm.js"
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
+    j.async = true;
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, "script", "dataLayer", "GTM-NXZMQSS");
+</script>
+<!-- End Google Tag Manager --> --}}
+
+
+

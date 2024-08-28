@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Report</title>
+    
+    <link rel="stylesheet" href="{{ asset('/allassets/BootstrapV5/css/bootstrap.min.css') }}">
+    
+    <style>
+        . {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url('{{ asset('/allassets/images/background/fp12.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            opacity: 0.6;
+            /* Optional: Add more styles as needed */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            /* Adjust opacity for better readability */
+            padding: 20px;
+            /* Add padding to the container */
+            border-radius: 10px;
+            /* Optional: Add border radius */
+        }
+
+        .table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+
+        }
+    </style>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="{{ asset('/allassets/BootstrapV5/DataTables/datatables.min.css') }}">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/df181f3442.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <div class="row">
+            <br><br><br>
+            <div class="col">
+                <h1 class="text-center mt-4">FINAL REPORT</h1>
+            </div>
+        </div>
+
+        <br><br>
+
+
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 mx-auto mt-4">
+                <div class="container">
+                <table class="table table-dark table-striped table-bordered table-hover" id="disputedataTable">
+                    <thead class="table-dark">
+                        <tr class="text-center">
+                            <th>Dispute Person Name</th>
+                            <th>Dispute Person Father Name</th>
+                            <th>Dispute Person Contact</th>
+                            <th>Dispute Person Address</th>
+                            <th>Dispute Type</th>
+                            <th>Dispute Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($disputes as $dispute)
+                            <tr class="text-center">
+                                <td>{{ $dispute->dispute_person_name }}</td>
+                                <td>{{ $dispute->dispute_person_father_name }}</td>
+                                <td>{{ $dispute->dispute_person_contact_number }}</td>
+                                <td>{{ $dispute->dispute_person_address }}</td>
+                                <td>{{ $dispute->disputestype->dispute_type_name }}</td>
+                                <td>
+                                    @if ($dispute->member_id === null && $dispute->dispute_status === 0 && $dispute->assigned_date === null)
+                                        <span class="badge bg-warning">Pending</span>
+                                    @elseif ($dispute->member_id !== null && $dispute->dispute_status === 1 && $dispute->assigned_date === null)
+                                        <span class="badge bg-warning">Member Assigned</span>
+                                    @elseif ($dispute->member_id !== null && $dispute->dispute_status === 2 && $dispute->assigned_date !== null)
+                                        <span class="badge bg-secondary"
+                                            onclick="showAssignedDate('{{ $dispute->assigned_date }}');"
+                                            title="Click to view assigned date">Date Assigned</span>
+                                        @if ($assignedDateMatchesCurrent)
+                                            <a href="{{ route('viewcommentfile', $dispute->id) }}"
+                                                class="btn btn-sm btn-secondary ms-1" title="Add Comment">Add
+                                                Comment</a>
+                                            @if ($commentsExist)
+                                                <a href="{{ route('viewcommentsfordisputer', $dispute->id) }}"
+                                                    class="btn btn-sm btn-secondary ms-1" title="View Comment">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                            @endif
+                                        @endif
+                                    @elseif ($dispute->member_id !== null && $dispute->dispute_status === 3 && $dispute->assigned_date !== null)
+                                        <span class="badge bg-secondary">In Progress</span>
+                                        <a href="{{ route('viewcommentsfordisputer', $dispute->id) }}"
+                                            class="btn btn-sm btn-secondary ms-1" title="View Comment">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    @elseif ($dispute->member_id !== null && $dispute->dispute_status === 4 && $dispute->assigned_date !== null)
+                                        <span class="badge bg-success">Completed</span>
+                                        <a href="{{ route('viewcommentsfordisputer', $dispute->id) }}"
+                                            class="btn btn-sm btn-success ms-1" title="View Comment">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            </div>
+            <div class="col-3"></div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="{{ asset('/allassets/BootstrapV5/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- DataTables JS -->
+    <script src="{{ asset('/allassets/DataTables/datatables.js') }}"></script>
+    <script src="{{ asset('/allassets/DataTables/datatables.min.js') }}"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Report</title>
+
+   
+    <link rel="stylesheet" href="{{ asset('/allassets/BootstrapV5/css/bootstrap.min.css') }}">
+
+    <style> 
+        . {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url('{{ asset('/allassets/images/background/fp12.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            opacity: 0.6;
+            /* Optional: Add more styles as needed */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            /* Adjust opacity for better readability */
+            padding: 20px;
+            /* Add padding to the container */  
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #343a40;
+            color: white;
+        }
+
+        td {
+            background-color: #f8f9fa;
+        }
+
+        .badge {
+            padding: 5px 10px;
+            font-size: 0.9em;
+        }
+
+        .btn {
+            padding: 5px 10px;
+            font-size: 0.9em;
+        }
+    </style>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="{{ asset('/allassets/BootstrapV5/DataTables/datatables.min.css') }}">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/df181f3442.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <div class="row">
+            <br><br><br>
+            <div class="col">
+                <h1 class="text-center mt-4">FINAL REPORT</h1>
+            </div>
+        </div>
+
+        <br><br>
+
+
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 mx-auto mt-4">
+                <div class="container">
+                <table class="table table-dark table-striped table-bordered table-hover" id="disputedataTable">
+                    <thead class="table-dark">
+                        <tr class="text-center">
+                            <th>Dispute Person Name</th>
+                            <th>Dispute Person Father Name</th>
+                            <th>Dispute Person Contact</th>
+                            <th>Dispute Person Address</th>
+                            <th>Dispute Type</th>
+                            <th>Dispute Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($disputes as $dispute)
+                            <tr class="text-center">
+                                <td>{{ $dispute->dispute_person_name }}</td>
+                                <td>{{ $dispute->dispute_person_father_name }}</td>
+                                <td>{{ $dispute->dispute_person_contact_number }}</td>
+                                <td>{{ $dispute->dispute_person_address }}</td>
+                                <td>{{ $dispute->disputestype->dispute_type_name }}</td>
+                                <td>
+                                    @if ($dispute->member_id === null && $dispute->dispute_status === 0 && $dispute->assigned_date === null)
+                                        <span class="badge bg-warning">Pending</span>
+                                    @elseif ($dispute->member_id !== null && $dispute->dispute_status === 1 && $dispute->assigned_date === null)
+                                        <span class="badge bg-warning">Member Assigned</span>
+                                    @elseif ($dispute->member_id !== null && $dispute->dispute_status === 2 && $dispute->assigned_date !== null)
+                                        <span class="badge bg-secondary"
+                                            onclick="showAssignedDate('{{ $dispute->assigned_date }}');"
+                                            title="Click to view assigned date">Date Assigned</span>
+                                        @if ($assignedDateMatchesCurrent)
+                                            <a href="{{ route('viewcommentfile', $dispute->id) }}"
+                                                class="btn btn-sm btn-secondary ms-1" title="Add Comment">Add
+                                                Comment</a>
+                                            @if ($commentsExist)
+                                                <a href="{{ route('viewcommentsfordisputer', $dispute->id) }}"
+                                                    class="btn btn-sm btn-secondary ms-1" title="View Comment">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                            @endif
+                                        @endif
+                                    @elseif ($dispute->member_id !== null && $dispute->dispute_status === 3 && $dispute->assigned_date !== null)
+                                        <span class="badge bg-secondary">In Progress</span>
+                                        <a href="{{ route('viewcommentsfordisputer', $dispute->id) }}"
+                                            class="btn btn-sm btn-secondary ms-1" title="View Comment">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    @elseif ($dispute->member_id !== null && $dispute->dispute_status === 4 && $dispute->assigned_date !== null)
+                                        <span class="badge bg-success">Completed</span>
+                                        <a href="{{ route('viewcommentsfordisputer', $dispute->id) }}"
+                                            class="btn btn-sm btn-success ms-1" title="View Comment">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            </div>
+            <div class="col-3"></div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="{{ asset('/allassets/BootstrapV5/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- DataTables JS -->
+    <script src="{{ asset('/allassets/DataTables/datatables.js') }}"></script>
+    <script src="{{ asset('/allassets/DataTables/datatables.min.js') }}"></script>
+</body>
+
+</html> -->

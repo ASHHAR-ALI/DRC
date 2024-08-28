@@ -1,0 +1,244 @@
+
+
+
+views
+        Admin
+                index.blade.php
+                                @extends('Themes.AdminTheme.Theme01.Layouts.layout1')
+                product.blade.php
+                                @extends('welcome')
+                                @section('content')
+                                <div class="container-fluid">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-1"></div>
+                                            <div class="col-10">
+                                                <!-- <div class="wrapper"> -->
+                                                <div class="text-center mt-1 mb-4 name">
+                                                    <h2>All Disputers</h2>
+                                                </div>
+                                                <table id="productDataTable" class="display" style="width:100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Email</th>
+                                                            <th>Password</th>
+                                                            <th>Phone</th>
+                                                            <th>Address</th>
+                                                            <th>CNic</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($products as $product)
+                                                            <tr>
+                                                                <td>{{ $product->name }}</td>
+                                                                <td>{{ $product->email }}</td>
+                                                                <td>{{ $product->password }}</td>
+                                                                <td>{{ $product->phone }}</td>
+                                                                <td>{{ $product->address }}</td>
+                                                                <td>{{ $product->cnic }}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Email</th>
+                                                            <th>Password</th>
+                                                            <th>Phone</th>
+                                                            <th>Address</th>
+                                                            <th>CNic</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                                <!-- </div> -->
+                                            </div>
+                                            <div class="col-1"></div>
+                                        </div>
+                                    </div>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $('#productDataTable').DataTable();
+                                        })
+                                    </script>
+                                </div> <!-- Closing Div for .container class -->
+                                @endsection
+        Member
+        User
+        Themes
+                Theme01
+                        Include
+                                    header.blade.php
+                                    navbar.blade.php
+                                    sidebar.blade.php
+                                    footer.blade.php
+                        layouts
+                                    layouts1.blade.php
+                                                    @include('Themes.AdminTheme.Theme01.Include.header')
+                                                    
+                                                    @include('Themes.AdminTheme.Theme01.Include.navbar')
+                                                    
+                                                    @include('Themes.AdminTheme.Theme01.Include.sidebar')
+                                                    
+                                                    @yield('content')
+                                                    
+                                                    @include('Themes.AdminTheme.Theme01.Include.footer')
+                                    layouts2.blade.php
+                                                    (Same goes as layouts01)
+                                    layouts3.blade.php
+                                                    (Same goes as layouts01)
+                        LinkScripts
+                                    headlinks.blade.php
+                                                        contains head link
+                                    scripttags.blade.php
+                                                        contains script tags
+                Theme02
+                        (Same goes as Theme01)
+
+        Welcome.blade.php
+                            @php
+                            $layout = '';
+                            // if (DB::table('theme')->check()) {
+                            //     $layout = 'Themes.AdminTheme.Theme01.Layouts.layout1';
+                            // } 
+                            // elseif (DB::table('theme')->check()) {
+                            //     $layout = 'Themes.AdminTheme.Theme01.Layouts.layout2';
+                            // }
+                            // elseif (DB::table('theme')->check()) {
+                            //     $layout = 'Themes.AdminTheme.Theme01.Layouts.layout3';
+                            // } 
+                                $value = 34;
+                            if ( $value == 34 ) {
+                                $layout = 'Themes.AdminTheme.Theme01.Layouts.layout1';
+                            }
+                            elseif ($value !== 34) {
+                                $layout = 'Themes.AdminTheme.Theme01.Layouts.layout2';
+                            }
+                            else {
+                                $layout = 'index';
+                            }
+                        @endphp
+                        
+                        @extends($layout)
+
+
+
+
+The Route in web.php are:
+Route::get('/main', [ProductController::class, 'productdisplay']);
+
+
+The Controller functions are:
+
+class ProductController extends Controller
+{
+    public function productview()
+    {
+        $products = Product::all();
+        return view('Admin.product', ['products' => $products]);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+views
+        
+        Themes
+
+            AdminTheme
+                        Theme01
+                                Include
+                                            header.blade.php
+                                            navbar.blade.php
+                                            sidebar.blade.php
+                                            footer.blade.php
+                                layouts
+                                            layouts1.blade.php
+                                                            @include('Themes.AdminTheme.Theme01.Include.header')
+                                                            
+                                                            @include('Themes.AdminTheme.Theme01.Include.navbar')
+                                                            
+                                                            @include('Themes.AdminTheme.Theme01.Include.sidebar')
+                                                            
+                                                            @yield('content')
+                                                            
+                                                            @include('Themes.AdminTheme.Theme01.Include.footer')
+                                            layouts2.blade.php
+                                                            (Same goes as layouts01)
+                                            layouts3.blade.php
+                                                            (Same goes as layouts01)
+                                LinkScripts
+                                            headlinks.blade.php
+                                                                contains head link
+                                            scripttags.blade.php
+                                                                contains script tags
+                        
+        
+
+
+
+
+The Route in web.php are:
+Route::get('/main', [ProductController::class, 'productdisplay']);
+
+
+The Controller functions are:
+
+class ProductController extends Controller
+{
+    public function productview()
+    {
+        $products = Product::all();
+        return view('Admin.product', ['products' => $products]);
+    }
+}
+
+
+
