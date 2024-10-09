@@ -72,11 +72,11 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 3. write the name of your own database name
 4. open the project file directory, open cmd
 5. write the following command:
-6.           "php artisan migrate"
-7.           "php artisan db:seed"
-8.           "php artisan cache:clear"
-9.           "php artisan route:clear"
-10.          "php artisan config:clear"
+6.     php artisan migrate
+7.     php artisan db:seed
+8.     php artisan cache:clear
+9.     php artisan route:clear
+10.     php artisan config:clear
 11. Run the project on the web browser
 12. For admin just click the signin button and put email and password:
 13.   email:    admin@gmail.com
