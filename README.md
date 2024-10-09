@@ -66,6 +66,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 
+## Instruction for Installation
 
 1. Clone the github repositrory
 2. make .env file and paste the code from .env-example to the .env
@@ -75,9 +76,10 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 6.     php artisan migrate
 7.     php artisan db:seed
 8.     php artisan cache:clear
-9.     php artisan route:clear
-10.     php artisan config:clear
-11. Run the project on the web browser
-12. For admin just click the signin button and put email and password:
-13.   email:    admin@gmail.com
-14.   password: admin123
+9.     php artisan config:clear
+10. optional, if get any error
+11.     php artisan route:clear
+12. Run the project on the web browser
+13. For admin just click the signin button and put email and password:
+14.   email:    admin@gmail.com
+15.   password: admin123
