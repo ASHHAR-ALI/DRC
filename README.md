@@ -64,3 +64,20 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+1. Clone the github repositrory
+2. make .env file and paste the code from .env-example to the .env
+3. write the name of your own database name
+4. open the project file directory, open cmd
+5. write the following command:
+6.           "php artisan migrate"
+7.           "php artisan db:seed"
+8.           "php artisan cache:clear"
+9.           "php artisan route:clear"
+10.          "php artisan config:clear"
+11. Run the project on the web browser
+12. For admin just click the signin button and put email and password:
+13.   email:    admin@gmail.com
+14.   password: admin123
